@@ -1,4 +1,4 @@
-# AWS Healthcare demo
+# Vault - Anonymization demo
 
 ## Tested env
 
