@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AWS x HashiCorp</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- https://getuikit.com/ -->
+  <!-- UIkit CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.15.3/dist/css/uikit.min.css" />
+  <!-- UIkit JS -->
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.3/dist/js/uikit.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.3/dist/js/uikit-icons.min.js"></script>
+  <!-- Vue JS -->
+  <script src="https://unpkg.com/vue@3"></script>
+  <!-- axios -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <div id="app" class="uk-container">
+    <div class="uk-navbar-container" uk-navbar>
+      <div class="uk-navbar-left">
+        <img src="../assets/vault.svg" height="80" uk-svg><h3>개인정보 가명/익명 처리기술</h3>
+      </div>
+    </div>
+    <div class="uk-card uk-card-body uk-card-secondary">
+      <h3 class="uk-card-title">정보 입력</h3>
+      <div class="uk-text-center" uk-grid>
+        <div class="uk-width-1-2">
+          <div class="uk-inline">
+            <span class="uk-form-icon" uk-icon="icon: user"></span>
+            <input v-model="nameOrg" class="uk-input uk-form-width-medium" type="text" placeholder="이름">
+          </div>
+        </div>
+        <div class="uk-width-1-2">
+          <div class="uk-inline">
+            <span class="uk-form-icon" uk-icon="icon: tablet-landscape"></span>
+           <input v-model="snnOrg" class="uk-input uk-form-width-medium" type="text" placeholder="주민등록번호">
+          </div>
+        </div>
+        <div class="uk-width-1-2">
+          <div class="uk-inline">
+            <span class="uk-form-icon" uk-icon="icon: receiver"></span>
+            <input v-model="phoneOrg" class="uk-input uk-form-width-medium" type="text" placeholder="전화번호">
+          </div>
+        </div>
+        <div class="uk-width-1-2">
+          <div class="uk-inline">
+            <span class="uk-form-icon" uk-icon="icon: mail"></span>
+            <input v-model="emailOrg" class="uk-input uk-form-width-medium" type="text" placeholder="이메일">
+          </div>
+        </div>
+        <div class="uk-width-1-2">
+          <div class="uk-inline">
+            <span class="uk-form-icon" uk-icon="icon: credit-card"></span>
+            <input v-model="cardNo" class="uk-input uk-form-width-medium" type="text" placeholder="카드번호">
+          </div>
+        </div>
+        <div class="uk-width-1-2">
+          <div class="uk-inline">
+            <div class="uk-form-controls">
+              <select v-model="cardType" class="uk-select uk-form-width-medium" id="form-stacked-select">
+                <option disabled value="">카드 타입</option>
+                <option>Master</option>
+                <option>Visa</option>
+                <option>AMEX</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="uk-width-1-1">
+          <button @click="sendVault" class="uk-button uk-button-default">Vault로 보내기</button>
+        </div>
+      </div>
+      <hr class="uk-divider-icon">
+    
+      <h3 class="uk-card-title">변환 정보</h3>
+      <div class="uk-text-left" uk-grid>
+        <div>
+          <span class="uk-label">비식별화 : 이름</span>
+          <input :value="nameEnc" class="uk-input" type="text" placeholder="비식별화" disabled>
+          <span class="uk-label">삭제기술 : 식별번호</span>
+          <input v-model="snnEnc" class="uk-input" type="text" placeholder="마스킹" disabled>
+          <span class="uk-label">비식별화 : 연락처</span>
+          <input v-model="phoneEnc" class="uk-input" type="text" placeholder="비식별화" disabled>
+          <span class="uk-label">양방향 암호화 : E-mail</span>
+          <input v-model="emailEnc" class="uk-input" type="text" placeholder="양방향암호화" disabled>
+          <span class="uk-label">무작위화 : 카드 정보</span>
+          <textarea v-model="cardToken" class="uk-textarea" placeholder="토큰화" disabled></textarea>
+        </div>
+      </div>
+      <div class="uk-text-center" uk-grid>
+        <div class="uk-width-1-1">
+          <button @click="getInfo" class="uk-button uk-button-default">정보 확인 하기</button>
+        </div>
+      </div>
+      <hr class="uk-divider-icon">
+    </div>
+  </div>
+  <script src="./js/script.js"></script>
+</body>
+</html>
