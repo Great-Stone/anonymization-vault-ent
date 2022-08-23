@@ -7,6 +7,8 @@
 - HashiCorp Vault Enterprise v1.11.1+ent
 
 ## Python Setup
+
+### pip install
 ```bash
 # Install fastapi
 pip install fastapi
@@ -15,7 +17,19 @@ pip install fastapi
 pip install uvicorn
 ```
 
+### vault information
+```python
+# main.py
+vault_addr = "http://127.0.0.1:8200"
+headers = {
+    'X-Vault-Token': 'root'
+}
+```
+
 ## Vault Setup
+
+### License
+Trial : <https://www.hashicorp.com/products/vault/trial>
 
 ### First terminal
 
@@ -122,3 +136,6 @@ uvicorn main:app --reload
 
 ### API Doc
 <http://127.0.0.1:8000/redoc>
+
+### Demo screenshot
+![](./demo.png)
