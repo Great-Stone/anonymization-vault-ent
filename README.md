@@ -4,7 +4,7 @@
 
 - macOS Monterey 12.5 intel
 - python 3.9.12
-- HashiCorp Vault Enterprise v1.11.1+ent
+- HashiCorp Vault Enterprise v1.11.2+ent
 
 ## Python Setup
 

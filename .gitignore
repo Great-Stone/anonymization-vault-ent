@@ -9,3 +9,6 @@ terraform/**/.terraform*
 
 # ssh
 **/.ssh
+
+# nomad
+terraform/nomad/
